@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="department_action" model="ir.actions.act_window">
+        <field name="name">Department</field>
+        <field name="description">Description</field>
+        <field name="res_model">swisscapital.department</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Department!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="department_root"
+              name="Department"
+              sequence="10" />
+
+    <menuitem id="department_employee_root"
+              name="Departments"
+              parent="department_root"
+              sequence="10" />
+
+    <menuitem id="department_employee"
+              name="Departments"
+              parent="department_employee_root"
+              action="department_action"
+              sequence="10" />
+
+
+</odoo>

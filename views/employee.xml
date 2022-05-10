@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="employee_form" model="ir.ui.view">
+        <field name="name">swisscapital_employee.form</field>
+        <field name="model">swisscapital_employee</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="image"  widget="image" class="oe_avatar"/>
+                            <field name="first_name" />
+                            <field name="last_name" />
+                            <field name="full_name" />
+                            <field name="gender" />
+                            <field name="department" />
+                            <field name="characteristics" widget="many2many_tags" />
+                        </group>
+                        <group>
+                            <field name="date_of_birth" />
+                            <field name="id_number" />
+                            <field name="place_of_birth" />
+                            <field name="home_town" />
+                            <field name="age" />
+                        </group>
+                        <group>
+                            <field name="card_number" />
+                            <field name="date_of_card_creation" />
+                            <field name="card_issuing_organization" />
+                            <field name="good_thru" />
+                            <field name="signature" widget="image" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="employee_tree" model="ir.ui.view">
+        <field name="name">swisscapital_employee.tree</field>
+        <field name="model">swisscapital_employee</field>
+        <field name="arch" type="xml">
+                <tree create="false" import="false">
+                    <field name="full_name" />
+                    <field name="id_number" />
+                    <field name="department" />
+                    <field name="characteristics" widget="many2many_tags" />
+                </tree>
+        </field>
+    </record>
+
+    <record id="employee_action" model="ir.actions.act_window">
+            <field name="name">Employees</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">swisscapital_employee</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first employee!
+                </p>
+            </field>
+    </record>
+
+    <menuitem id="swisscapital_root"
+              name="Swisscapital"
+              sequence="10"/>
+
+    <menuitem id="swisscapital_employee_root"
+              name="Employees"
+              parent="swisscapital_root"
+              sequence="10"/>
+
+    <menuitem id="swisscapital_employee"
+              name="Employees"
+              parent="swisscapital_employee_root"
+              action="employee_action"
+              sequence="10"/>
+
+</odoo>

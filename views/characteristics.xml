@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="characteristics_action" model="ir.actions.act_window">
+        <field name="name">Characteristics</field>
+        <field name="description">Characteristics</field>
+        <field name="res_model">swisscapital.characteristics</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create characteristics!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="characteristics_root"
+              name="Characteristics"
+              sequence="10" />
+
+    <menuitem id="characteristics_employee_root"
+              name="Characteristics"
+              parent="characteristics_root"
+              sequence="10" />
+
+    <menuitem id="characteristics_employee"
+              name="Characteristics"
+              parent="characteristics_employee_root"
+              action="characteristics_action"
+              sequence="10" />
+
+
+</odoo>

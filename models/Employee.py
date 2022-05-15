@@ -8,7 +8,7 @@ class Employees(models.Model):
     _description = "Employee"
     first_name = fields.Char(string="First Name")
     last_name = fields.Char(string="Last Name")
-    full_name = fields.Char(string="Full Name", compute="get_last_name")
+    full_name = fields.Char(string="Full Name", compute="get_fullname")
     home_town = fields.Char(string="Home Town")
     date_of_birth = fields.Date(string='Date of birth')
     age = fields.Integer(string="Age", compute='_compute_age', tracking=True)
@@ -27,6 +27,8 @@ class Employees(models.Model):
     good_thru = fields.Date(string="Card good thru")
     department = fields.Many2one("swisscapital.department", string="Department")
     characteristics = fields.Many2many("swisscapital.characteristics", string="Characteristics")
+    comment = fields.Text(string="კომენტარი", readonly=True)
+
 
     _sql_constraints = [
         ('unique_id_number', 'unique (id_number)', 'ID number must be unique.'),
@@ -34,7 +36,7 @@ class Employees(models.Model):
     ]
 
 
-    def get_last_name(self):
+    def get_fullname(self):
         for record in self:
             record.full_name = record.first_name + " " + record.last_name
 
@@ -58,9 +60,9 @@ class Employees(models.Model):
             card_created = datetime.strptime(record.date_of_card_creation, '%Y-%m-%d').date()
             valid_thru = datetime.strptime(record.good_thru, '%Y-%m-%d').date()
             if (today - card_created).days > 3652.5:
-                raise ValidationError(("ბარათის მოქმედების ვადა გაუვიდა!"))
-            if (valid_thru - card_created).days > 3652.5:
                 raise ValidationError(("ბარათს მოქმედების ვადა გაუვიდა!"))
+            if (valid_thru - card_created).days > 3652.5:
+                raise ValidationError(("ბარათის მოქმედების ვადასა და ბარათის შექმნის თარიღს შორის სხვაობა უნდა იყოს მაქსიმუმ 10 წელი"))
 
     @api.constrains('id_number')
     def check_id(self):
@@ -72,8 +74,12 @@ class Employees(models.Model):
             else:
                 raise ValidationError(("ჩანაწერი არ ემთხვევა პირადი ნომრის ფორმატს(შეიყვანეთ მხოლოდ ციფრები!)"))
 
+    def add_comment(self):
 
-
+        return {'type': 'ir.actions.act_window',
+                'res_model': 'add.comment.wizard',
+                'view_mode': 'form',
+                'target': 'new'}
 
 
 

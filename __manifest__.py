@@ -11,6 +11,7 @@
     'depends': [],
     'data': [
         'security/ir.model.access.csv',
+        'wizard/add_comment_view.xml',
         'views/employee.xml',
         'views/department.xml',
         'views/characteristics.xml',

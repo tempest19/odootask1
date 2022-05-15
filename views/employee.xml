@@ -6,6 +6,9 @@
         <field name="model">swisscapital_employee</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="%(om_SwissCapital.add_comment_action)d" string="კომენტარის დამატება" type="action" class="oe_highlight" />
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -23,6 +26,7 @@
                             <field name="place_of_birth" />
                             <field name="home_town" />
                             <field name="age" />
+                            <field name="comment" />
                         </group>
                         <group>
                             <field name="card_number" />
@@ -36,6 +40,8 @@
             </form>
         </field>
     </record>
+
+
     <record id="employee_tree" model="ir.ui.view">
         <field name="name">swisscapital_employee.tree</field>
         <field name="model">swisscapital_employee</field>
@@ -60,6 +66,8 @@
                 </p>
             </field>
     </record>
+
+
 
     <menuitem id="swisscapital_root"
               name="Swisscapital"

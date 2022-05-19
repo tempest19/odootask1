@@ -28,7 +28,7 @@ class Employees(models.Model):
     department = fields.Many2one("swisscapital.department", string="Department")
     characteristics = fields.Many2many("swisscapital.characteristics", string="Characteristics")
     comment = fields.Text(string="კომენტარი", readonly=True)
-
+    user_id = fields.Many2one('res.users', string='Responsible')
 
     _sql_constraints = [
         ('unique_id_number', 'unique (id_number)', 'ID number must be unique.'),

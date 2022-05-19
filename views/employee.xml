@@ -19,6 +19,7 @@
                             <field name="gender" />
                             <field name="department" />
                             <field name="characteristics" widget="many2many_tags" />
+                            <field name="user_id" />
                         </group>
                         <group>
                             <field name="date_of_birth" />
@@ -51,6 +52,7 @@
                     <field name="id_number" />
                     <field name="department" />
                     <field name="characteristics" widget="many2many_tags" />
+                    <field name="user_id" />
                 </tree>
         </field>
     </record>

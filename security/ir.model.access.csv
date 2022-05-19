@@ -1,3 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_swisscapital_employee,access.swisscapital.employee,model_swisscapital_employee,,1,1,1,1
+access_swisscapital_employee,access.swisscapital.employee,om_SwissCapital.model_swisscapital_employee,group_swisscapital_operator,1,1,1,1
+access_swisscapital_characteristics,access.swisscapital.characteristics,om_SwissCapital.model_swisscapital_characteristics,,1,1,1,1
+access_swisscapital_department,access.swisscapital.department,om_SwissCapital.model_swisscapital_department,,1,1,1,1
 access_add_comment_wizard,access.add.comment.wizard,model_add_comment_wizard,,1,1,1,1
+
+

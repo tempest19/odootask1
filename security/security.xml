@@ -15,7 +15,6 @@
     <record id="group_swisscapital_operator" model="res.groups">
         <field name="name">Operator</field>
         <field name="category_id" ref="module_category_swisscapital" />
-        <field name="implied_ids" eval="[(3, ref('group_swisscapital_manager'))]" />
     </record>
 
     <record model="ir.rule" id="operator_record_rule">
